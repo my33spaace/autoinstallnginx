@@ -2,9 +2,10 @@ echo "Domain: "
 read domain
 echo "BD PASS: "
 read bdpass
+echo mysql-server-5.7 mysql-server/root_password password $dbpass | debconf-set-selections
+echo mysql-server-5.7 mysql-server/root_password_again password $dbpass  | debconf-set-selections
 apt install -y nano curl mc git rpl
-curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
-apt install -y build-essential nginx php-fpm php-mcrypt git php-mysql nodejs redis-server php-xml php-mbstring nodejs mysql-server php-mysql php-bcmath php-curl php-gd letsencrypt
+apt install -y build-essential nginx php-fpm php-mcrypt git php-mysql redis-server php-xml php-mbstring mysql-server php-mysql php-bcmath php-curl php-gd letsencrypt
 echo "cgi.fix_pathinfo=0" >> /etc/php/7.0/fpm/php.ini
 echo "[client]
 user=root
